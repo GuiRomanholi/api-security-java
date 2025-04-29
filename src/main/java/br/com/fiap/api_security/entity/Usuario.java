@@ -1,24 +1,26 @@
 package br.com.fiap.api_security.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
+@Table(name = "tb_usuario")
 public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
+    @Column(name = "usuario_login", unique = true, nullable = false)
     private String login;
+    @Column(name = "usuario_senha", nullable = false)
     private String senha;
+    @Column(name = "usuario_role")
     private UserRole role;
 
 
@@ -70,4 +72,9 @@ public class Usuario implements UserDetails {
 
     public Usuario() {
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
 }
