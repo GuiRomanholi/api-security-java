@@ -8,6 +8,14 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching //Habilita o suporte do Cache
 public class ApiSecurityApplication {
 
+
+
+
+
+
+
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApiSecurityApplication.class, args);
 	}
